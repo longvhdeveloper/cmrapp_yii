@@ -102,6 +102,40 @@ class ServicesController extends Controller
 
         return $this->redirect(['index']);
     }
+    
+    public function actionJson()
+    {
+        $models = ServiceRecord::find()->all();
+        $data = array_map(function($model){
+            return $model->attributes;
+        }, $models);
+        
+        //create respone object
+        $respone = \Yii::$app->response;
+        $respone->format = \yii\web\Response::FORMAT_JSON;
+        $respone->data = $data;
+        
+        return $respone;
+    }
+    
+    public function actionYaml()
+    {
+        //create model
+        $models = ServiceRecord::find()->all();
+        
+        //get data into array
+        $data = array_map(function($model){
+            return $model->attributes;
+        }, $models);
+        
+        //create response to yaml
+        $response = \Yii::$app->response;
+        $response->format = \app\utilities\YamlResponseFormatter::FORMAT;
+        $response->data = $data;
+        
+        //return result
+        return $response;
+    }
 
     /**
      * Finds the ServiceRecord model based on its primary key value.

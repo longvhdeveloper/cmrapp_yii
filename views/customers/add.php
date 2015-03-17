@@ -22,3 +22,4 @@ echo $form->field($phoneRecord, 'number');
 echo Html::submitButton('Create', array('class' => 'btn btn-primary'));
 
 $form->end();
+?>

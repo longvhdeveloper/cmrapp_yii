@@ -1,8 +1,9 @@
 <?php
 use yii\helpers\Html;
 
-\yii\bootstrap\BootstrapAsset::register($this); // using bootstrap css for template
-\yii\web\YiiAsset::register($this); // using javascript framework in this template
+//\yii\bootstrap\BootstrapAsset::register($this); // using bootstrap css for template
+//\yii\web\YiiAsset::register($this); // using javascript framework in this template
+app\assets\ApplicationUiAssetBundle::register($this);
 ?>
 <?php $this->beginPage(); ?>
 <!doctype html>
