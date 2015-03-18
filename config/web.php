@@ -46,5 +46,15 @@ return array(
                 ],
             ],
         ],
+        'user' => [
+            'identityClass' => 'app\model\UserRecord'
+        ],
+        'assetManager' => array(
+            'linkAssets' => true,
+        ),
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
+        ],
     ),
 );

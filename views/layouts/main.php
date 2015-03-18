@@ -17,6 +17,19 @@ app\assets\ApplicationUiAssetBundle::register($this);
 <body>
 <?php $this->beginBody(); ?>
 <div class="container">
+    <!--login area-->
+    <div class="authorization-indicator">
+        <?php 
+        if (Yii::$app->user->isGuest) {
+            echo Html::tag('span', 'Guest');
+            echo Html::a('Login', 'site/login');
+        } else {
+            echo Html::tag('span', Yii::$app->user->identity->username);
+            echo Html::a('Logout', 'site/logout');
+        }
+        ?>
+    </div>
+    <!-- end of login area -->
     <?php echo $content; ?>
     <footer class="footer"><?php echo Yii::powered(); ?></footer>
 </div>

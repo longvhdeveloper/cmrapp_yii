@@ -12,6 +12,23 @@ use app\models\customer\Phone;
 
 class CustomersController extends Controller
 {
+    public function behaviors() {
+        return [
+            'rules' => [
+                [
+                    'actions' => ['add'],
+                    'roles' => ['manager'],
+                    'allow' => true
+                ],
+                [
+                    'actions' => ['index', 'query'],
+                    'roles' => ['user'],
+                    'allow' => true,
+                ]
+            ],
+        ];
+    }
+    
     public function actionIndex()
     {
         //get customer
